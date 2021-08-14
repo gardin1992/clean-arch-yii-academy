@@ -1,13 +1,12 @@
 import ExportRegistration from "../../../application/use-cases/export-registration/ExportRegistration";
 import InputBoundary from "../../../application/use-cases/export-registration/InputBoundary";
-import { IHttpRequest, IHttpResponse } from "./ports/http";
 
-export class ExportRegistrationController {
-  constructor(
-    private request: IHttpRequest,
-    private response: IHttpResponse,
-    private useCase: ExportRegistration
-  ) {}
+/**
+ * Controller faz apenas UMA ação. Não VARIAS ações
+ * 1 controller para 1 useCase
+ */
+export class ExportRegistrationControllerCli {
+  constructor(private useCase: ExportRegistration) {}
 
   async handle(): Promise<string> {
     const input = new InputBoundary(
