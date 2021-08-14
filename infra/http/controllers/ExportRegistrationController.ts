@@ -11,9 +11,9 @@ export class ExportRegistrationController {
 
   async handle(): Promise<string> {
     const input = new InputBoundary(
-      "41907122800",
+      "01234567890",
       "xpto.pdf",
-      __dirname + "../../../../storage/registrations"
+      __dirname + "/../../../storage/registrations"
     );
 
     const output = await this.useCase.handle(input);

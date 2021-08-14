@@ -17,9 +17,17 @@ export default class PdfCreateNodeAdapter
   };
 
   private pdfData: any;
+  private path: string;
+  private fileName: string;
 
-  async generate(registration: Registration): Promise<string> {
+  async generate(
+    registration: Registration,
+    path: string,
+    fileName: string
+  ): Promise<string> {
     this.pdfData = registration;
+    this.path = path;
+    this.fileName = fileName;
     return await this.createPdfFile();
   }
 
@@ -32,12 +40,12 @@ export default class PdfCreateNodeAdapter
       data: {
         ...this.pdfData,
       },
-      path: PROJECT_DIR + "/storage/output.pdf",
+      path: `tmp/${this.fileName}`,
       type: "",
     };
 
     const createdPdf = await pdf.create(document, this.options);
 
-    return await fsPromise.readFile(createdPdf.filename, "utf8");
+    return await fsPromise.readFile(createdPdf.filename, "binary");
   };
 }

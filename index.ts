@@ -10,38 +10,43 @@ import {
 import Mysql2RegistrationRepository from "./infra/repositories/mysql/Mysql2RegistrationRepository";
 
 const exportRegistrationAction = async () => {
-  // Entities
-  const loadRegistrationRepo = new Mysql2RegistrationRepository(
-    await mysqlConnect()
-  );
-  const pdfExporter = new PdfCreateNodeAdapter();
-  const storage = new LocalStorage();
+  try {
+    // Entities
+    const loadRegistrationRepo = new Mysql2RegistrationRepository(
+      await mysqlConnect()
+    );
+    const pdfExporter = new PdfCreateNodeAdapter();
+    const storage = new LocalStorage();
 
-  // Use case
+    // Use case
+    const request: IHttpRequest = {
+      body: "",
+    };
 
-  const request: IHttpRequest = {
-    body: "",
-  };
+    const response: IHttpResponse = {
+      body: "",
+      statusCode: 400,
+    };
 
-  const response: IHttpResponse = {
-    body: "",
-    statusCode: 400,
-  };
+    const exportRegistrationUseCase = new ExportRegistration(
+      loadRegistrationRepo,
+      pdfExporter,
+      storage
+    );
 
-  const exportRegistrationUseCase = new ExportRegistration(
-    loadRegistrationRepo,
-    pdfExporter,
-    storage
-  );
+    const controller = new ExportRegistrationController(
+      request,
+      response,
+      exportRegistrationUseCase
+    );
 
-  const controller = new ExportRegistrationController(
-    request,
-    response,
-    exportRegistrationUseCase
-  );
+    const output = await controller.handle();
+    console.log("Arquivo salvo em: ", output);
 
-  const output = await controller.handle();
-  console.log(output);
+    process.exit();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exportRegistrationAction().finally();

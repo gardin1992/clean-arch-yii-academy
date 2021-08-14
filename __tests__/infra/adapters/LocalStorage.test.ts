@@ -12,7 +12,6 @@ const teste = async () => {
   );
 
   const respStorage = await storage.store(filename, path, content);
-
   console.log("complete storage", respStorage);
 };
 

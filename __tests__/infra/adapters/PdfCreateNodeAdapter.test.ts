@@ -13,7 +13,7 @@ const registration = new Registration()
 
 const htmlPdfAdapter = new PdfCreateNodeAdapter();
 htmlPdfAdapter
-  .generate(registration)
+  .generate(registration, __dirname + "/", "example.pdf")
   .then((resp) => {
     console.log("Concluiu");
   })

@@ -10,14 +10,14 @@ export default class LocalStorage implements IStorage {
     content: string | Buffer
   ): Promise<boolean> {
     const controller = new AbortController();
-    const { signal } = controller;
+    // const { signal } = controller;
 
     const fullFileName = `${path}${directorySeparator}${fileName}`;
 
-    const promise = fsPromises.writeFile(fullFileName, content, "utf-8");
+    const promise = fsPromises.writeFile(fullFileName, content, "binary");
 
     // Abort the request before the promise settles.
-    // controller.abort();
+    controller.abort();
 
     await promise;
 

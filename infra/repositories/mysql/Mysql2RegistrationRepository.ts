@@ -1,6 +1,7 @@
 import { Connection } from "mysql2/promise";
 
 import Registration from "../../../domain/entities/Registration";
+import RegistrationNotFoundException from "../../../domain/exceptions/RegistrationNotFoundException";
 import { ILoadRegistrationRepository } from "../../../domain/repositories/ILoadRegistrationRepository";
 import Cpf from "../../../domain/value-objects/Cpf";
 import Email from "../../../domain/value-objects/Email";
@@ -17,7 +18,10 @@ export default class Mysql2RegistrationRepository
 
     const [rows] = resultQuery;
 
-    if (rows[0] == null) throw new Error("Sem resultados para o CPF.");
+    if (rows[0] == null)
+      throw new RegistrationNotFoundException(
+        `CPF ${cpf.toString()} não encontrado.`
+      );
 
     const registrationData = rows[0];
 

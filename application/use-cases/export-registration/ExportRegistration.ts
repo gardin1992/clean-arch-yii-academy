@@ -28,9 +28,16 @@ export default class ExportRegistration {
   // método de executar o usecase
   async handle(input: InputBoundary): Promise<OutputBoundary> {
     const cpf = new Cpf(input.getRegistrationNumber());
+    const pdfFileName = input.getPdfFileName();
+    const path = input.getPath();
+
     // faz a consulta no banco
     const registration = await this.repository.loadByRegistrationNumber(cpf);
-    const fileContent = await this.pdfExporter.generate(registration);
+    const fileContent = await this.pdfExporter.generate(
+      registration,
+      path,
+      pdfFileName
+    );
 
     await this.storage.store(
       input.getPdfFileName(),
