@@ -1,3 +1,9 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 import ExportRegistration from "./application/use-cases/export-registration/ExportRegistration";
 import InputBoundary from "./application/use-cases/export-registration/InputBoundary";
 import OutputBoundary from "./application/use-cases/export-registration/OutputBoundary";
@@ -14,6 +20,20 @@ const registration = new Registration(
   "0001"
 );
 
-// const exportRegistrationUseCase = new ExportRegistration()
-// const inputBoundary = new InputBoundary("41907122800")
-// const outputBoundary = new OutputBoundary()
+// Entities
+const loadRegistrationRepo = new (class {})();
+const pdfExporter = new (class {})();
+const storage = new (class {})();
+
+// Use case
+const exportRegistrationUseCase = new ExportRegistration(
+  loadRegistrationRepo,
+  pdfExporter,
+  storage
+);
+const input = new InputBoundary(
+  "41907122800",
+  "xpto",
+  __dirname + "../storage"
+);
+const output = exportRegistrationUseCase.handle(input);

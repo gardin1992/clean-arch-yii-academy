@@ -4,5 +4,10 @@
   "description": "construindo o exemplo do curso em typescript",
   "main": "index.js",
   "author": "Joao Vieira <gardin1992@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "path": "^0.12.7",
+    "url": "^0.11.0"
+  },
+  "type": "module"
 }
