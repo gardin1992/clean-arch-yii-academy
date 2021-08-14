@@ -1,0 +1,8 @@
+{
+  "name": "ca-yii-academy-ts",
+  "version": "1.0.0",
+  "description": "construindo o exemplo do curso em typescript",
+  "main": "index.js",
+  "author": "Joao Vieira <gardin1992@gmail.com>",
+  "license": "MIT"
+}
