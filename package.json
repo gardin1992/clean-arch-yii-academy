@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Joao Vieira <gardin1992@gmail.com>",
   "license": "MIT",
+  "repository": "https://github.com/gardin1992/clean-arch-yii-academy.git",
   "scripts": {
     "start": "ts-node ./index.ts"
   },
