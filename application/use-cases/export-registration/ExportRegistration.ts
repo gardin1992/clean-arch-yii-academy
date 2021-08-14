@@ -26,12 +26,17 @@ export default class ExportRegistration {
   }
 
   // método de executar o usecase
-  handle(input: InputBoundary): OutputBoundary {
+  async handle(input: InputBoundary): Promise<OutputBoundary> {
     const cpf = new Cpf(input.getRegistrationNumber());
     // faz a consulta no banco
-    const registration = this.repository.loadByRegistrationNumber(cpf);
-    const fileContent = this.pdfExporter.generate(registration);
-    this.storage.store(input.getPdfFileName(), input.getPath(), fileContent);
+    const registration = await this.repository.loadByRegistrationNumber(cpf);
+    const fileContent = await this.pdfExporter.generate(registration);
+
+    await this.storage.store(
+      input.getPdfFileName(),
+      input.getPath(),
+      fileContent
+    );
 
     return new OutputBoundary(
       `${input.getPath()}${_path.sep}${input.getPdfFileName()}`

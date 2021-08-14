@@ -2,5 +2,5 @@ import Registration from "../entities/Registration";
 import Cpf from "../value-objects/Cpf";
 
 export interface ILoadRegistrationRepository {
-  loadByRegistrationNumber(cpf: Cpf): Registration;
+  loadByRegistrationNumber(cpf: Cpf): Promise<Registration>;
 }

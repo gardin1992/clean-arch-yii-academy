@@ -21,14 +21,18 @@ const pdfExporter = new PdfCreateNodeAdapter();
 const storage = new (class {})();
 
 // Use case
-const exportRegistrationUseCase = new ExportRegistration(
-  loadRegistrationRepo,
-  pdfExporter,
-  storage
-);
-const input = new InputBoundary(
-  "41907122800",
-  "xpto",
-  __dirname + "../storage"
-);
-const output = exportRegistrationUseCase.handle(input);
+
+const exportRegistrationAction = async () => {
+  const exportRegistrationUseCase = new ExportRegistration(
+    loadRegistrationRepo,
+    pdfExporter,
+    storage
+  );
+  const input = new InputBoundary(
+    "41907122800",
+    "xpto",
+    __dirname + "../storage"
+  );
+  const output = await exportRegistrationUseCase.handle(input);
+  console.log(output);
+};

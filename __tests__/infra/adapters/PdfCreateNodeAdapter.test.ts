@@ -13,4 +13,11 @@ const registration = new Registration(
 );
 
 const htmlPdfAdapter = new PdfCreateNodeAdapter();
-htmlPdfAdapter.generate(registration);
+htmlPdfAdapter
+  .generate(registration)
+  .then((resp) => {
+    console.log("Concluiu", resp);
+  })
+  .catch((err) => {
+    console.log("concluiu com falha", err.message);
+  });
