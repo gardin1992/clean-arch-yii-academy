@@ -16,7 +16,7 @@ const htmlPdfAdapter = new PdfCreateNodeAdapter();
 htmlPdfAdapter
   .generate(registration)
   .then((resp) => {
-    console.log("Concluiu", resp);
+    console.log("Concluiu");
   })
   .catch((err) => {
     console.log("concluiu com falha", err.message);

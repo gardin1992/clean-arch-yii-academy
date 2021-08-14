@@ -37,6 +37,7 @@ export default class PdfCreateNodeAdapter
     };
 
     const createdPdf = await pdf.create(document, this.options);
-    return createdPdf.filename;
+
+    return await fsPromise.readFile(createdPdf.filename, "utf8");
   };
 }

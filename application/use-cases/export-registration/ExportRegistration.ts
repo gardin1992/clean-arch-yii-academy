@@ -1,4 +1,4 @@
-import _path from "path";
+import { sep as directorySeparator } from "path";
 
 // receber uma interface se necessário
 
@@ -39,7 +39,7 @@ export default class ExportRegistration {
     );
 
     return new OutputBoundary(
-      `${input.getPath()}${_path.sep}${input.getPdfFileName()}`
+      `${input.getPath()}${directorySeparator}${input.getPdfFileName()}`
     );
   }
 }
