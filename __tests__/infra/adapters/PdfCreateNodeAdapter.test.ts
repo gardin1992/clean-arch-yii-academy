@@ -1,7 +1,7 @@
-import Registration from "../../../domain/entities/Registration";
-import Cpf from "../../../domain/value-objects/Cpf";
-import Email from "../../../domain/value-objects/Email";
-import PdfCreateNodeAdapter from "../../../infra/adapters/pdf-create-node-adapter/PdfCreateNodeAdapter";
+import Registration from "../../../src/domain/entities/Registration";
+import Cpf from "../../../src/domain/value-objects/Cpf";
+import Email from "../../../src/domain/value-objects/Email";
+import PdfCreateNodeAdapter from "../../../src/infra/adapters/pdf-create-node-adapter/PdfCreateNodeAdapter";
 
 const registration = new Registration()
   .setName("Joao Vieira")

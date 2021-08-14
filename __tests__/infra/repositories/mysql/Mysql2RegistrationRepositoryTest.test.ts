@@ -1,6 +1,6 @@
 import { mysqlConnect } from "../../../../configs/db";
-import Cpf from "../../../../domain/value-objects/Cpf";
-import Mysql2RegistrationRepository from "../../../../infra/repositories/mysql/Mysql2RegistrationRepository";
+import Cpf from "../../../../src/domain/value-objects/Cpf";
+import Mysql2RegistrationRepository from "../../../../src/infra/repositories/mysql/Mysql2RegistrationRepository";
 
 const Mysql2RegistrationRepositoryTest = async () => {
   try {

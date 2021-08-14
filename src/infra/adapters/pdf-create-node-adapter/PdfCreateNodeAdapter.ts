@@ -4,7 +4,7 @@ import { promises as fsPromise } from "fs";
 
 import { IExportRegistrationPdfExporter } from "../../../application/contracts/IExportRegistrationPdfExporter";
 import Registration from "../../../domain/entities/Registration";
-import { PROJECT_DIR } from "../../../settings";
+import { PROJECT_DIR } from "../../../../settings";
 
 export default class PdfCreateNodeAdapter
   implements IExportRegistrationPdfExporter

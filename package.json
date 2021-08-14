@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Joao Vieira <gardin1992@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "ts-node ./index.ts"
+  },
   "dependencies": {
     "create-html": "^4.1.0",
     "mysql": "^2.18.1",

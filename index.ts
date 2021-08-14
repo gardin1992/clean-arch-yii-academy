@@ -1,13 +1,13 @@
 import { mysqlConnect } from "./configs/db";
-import ExportRegistration from "./application/use-cases/export-registration/ExportRegistration";
-import LocalStorage from "./infra/adapters/LocalStorage";
-import PdfCreateNodeAdapter from "./infra/adapters/pdf-create-node-adapter/PdfCreateNodeAdapter";
-import { ExportRegistrationController } from "./infra/http/controllers/ExportRegistrationController";
+import ExportRegistration from "./src/application/use-cases/export-registration/ExportRegistration";
+import LocalStorage from "./src/infra/adapters/LocalStorage";
+import PdfCreateNodeAdapter from "./src/infra/adapters/pdf-create-node-adapter/PdfCreateNodeAdapter";
+import { ExportRegistrationController } from "./src/infra/http/controllers/ExportRegistrationController";
 import {
   IHttpRequest,
   IHttpResponse,
-} from "./infra/http/controllers/ports/http";
-import Mysql2RegistrationRepository from "./infra/repositories/mysql/Mysql2RegistrationRepository";
+} from "./src/infra/http/controllers/ports/http";
+import Mysql2RegistrationRepository from "./src/infra/repositories/mysql/Mysql2RegistrationRepository";
 
 const exportRegistrationAction = async () => {
   try {

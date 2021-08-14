@@ -13,7 +13,7 @@ export class ExportRegistrationController {
     const input = new InputBoundary(
       "01234567890",
       "xpto.pdf",
-      __dirname + "/../../../storage/registrations"
+      __dirname + "/../../../../storage/registrations"
     );
 
     const output = await this.useCase.handle(input);

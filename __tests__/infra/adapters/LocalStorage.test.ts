@@ -1,4 +1,4 @@
-import LocalStorage from "../../../infra/adapters/LocalStorage";
+import LocalStorage from "../../../src/infra/adapters/LocalStorage";
 import { sep as directorySeparator } from "path";
 import { promises as fsPromises } from "fs";
 
