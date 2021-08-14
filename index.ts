@@ -1,15 +1,10 @@
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 import ExportRegistration from "./application/use-cases/export-registration/ExportRegistration";
 import InputBoundary from "./application/use-cases/export-registration/InputBoundary";
 import OutputBoundary from "./application/use-cases/export-registration/OutputBoundary";
 import Registration from "./domain/entities/Registration";
 import Cpf from "./domain/value-objects/Cpf";
 import Email from "./domain/value-objects/Email";
+import PdfCreateNodeAdapter from "./infra/adapters/pdf-create-node-adapter/PdfCreateNodeAdapter";
 
 const registration = new Registration(
   "Joao Vieira",
@@ -22,7 +17,7 @@ const registration = new Registration(
 
 // Entities
 const loadRegistrationRepo = new (class {})();
-const pdfExporter = new (class {})();
+const pdfExporter = new PdfCreateNodeAdapter();
 const storage = new (class {})();
 
 // Use case

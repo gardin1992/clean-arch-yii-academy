@@ -1,6 +1,8 @@
 import Cpf from "../value-objects/Cpf";
 import Email from "../value-objects/Email";
 
+// Deixar o dominio ricos
+// nao apenas getters and setters
 export default class Registration {
   constructor(
     public name: string,
